@@ -27,6 +27,5 @@ export class DeviceFactoryEntity {
 
 export class DeviceEntity extends DeviceFactoryEntity {
   @Expose({ name: "id" })
-  @IsUUID()
-  id: string;
+  id: number;
 }

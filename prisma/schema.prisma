@@ -15,8 +15,8 @@ datasource db {
 
 model Device {
   id              Int                   @id @default(autoincrement())
-  Name            String                @db.VarChar(20)
-  Brand           String                @db.VarChar(30)
-  State           String                @db.VarChar(20)
-  CreationTime    DateTime              @default(now())
+  name            String                @db.VarChar(20)
+  brand           String                @db.VarChar(30)
+  state           String                @db.VarChar(20)
+  creationTime    DateTime              @default(now())
 }
