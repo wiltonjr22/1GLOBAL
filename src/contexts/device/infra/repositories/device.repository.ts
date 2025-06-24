@@ -9,13 +9,12 @@ import { UpdateDeviceDto } from "../../presentation/dtos/update.dto";
 export class DeviceRepository implements IDeviceRepository {
   constructor(private readonly prisma: PrismaService) { }
 
-  async create(data: CreateDeviceDto): Promise<void> {
+  async create(data: Partial<CreateDeviceDto>): Promise<void> {
     await this.prisma.device.create({
       data: {
         name: data.name,
         brand: data.brand,
         state: data.state,
-        creationTime: new Date(),
       },
     });
   }
