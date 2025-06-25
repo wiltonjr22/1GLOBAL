@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { DeviceEntity, DeviceState } from "../../commom/entities/device.entities";
 import { PrismaService } from "@/resources/database/prisma/prisma.service";
 import { CreateDeviceDto } from "../../presentation/dtos/create.dto";
-import { IDeviceRepository } from "../interfaces/idevice.repository";
+import { IDeviceRepository } from "../interfaces/device.repository";
 import { UpdateDeviceDto } from "../../presentation/dtos/update.dto";
 
 @Injectable()
