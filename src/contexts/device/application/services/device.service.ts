@@ -33,10 +33,6 @@ export class DeviceService {
   async update(id: number, updateDto: UpdateDeviceDto): Promise<DeviceEntity> {
     const device = await this.findOne(id);
 
-    if ("creationTime" in updateDto) {
-      throw new BadRequestException("creationTime cannot be updated");
-    }
-
     if (
       device.state === DeviceState.IN_USE &&
       (updateDto.name !== undefined || updateDto.brand !== undefined)
