@@ -1,12 +1,13 @@
 import { Injectable, NotFoundException, BadRequestException } from "@nestjs/common";
-import { DeviceRepository } from "../../infra/repositories/device.repository";
 import { DeviceEntity, DeviceState } from "../../commom/entities/device.entities";
 import { CreateDeviceDto } from "../../presentation/dtos/create.dto";
 import { UpdateDeviceDto } from "../../presentation/dtos/update.dto";
+import { IDeviceService } from "../interfaces/device.service";
+import { IDeviceRepository } from "../../infra/interfaces/device.repository";
 
 @Injectable()
-export class DeviceService {
-  constructor(private readonly deviceRepository: DeviceRepository) { }
+export class DeviceService implements IDeviceService {
+  constructor(private readonly deviceRepository: IDeviceRepository) { }
 
   async create(createDeviceDto: CreateDeviceDto): Promise<void> {
     this.deviceRepository.create(createDeviceDto);
