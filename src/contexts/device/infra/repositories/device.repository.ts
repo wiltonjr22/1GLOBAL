@@ -9,7 +9,7 @@ import { UpdateDeviceDto } from "../../presentation/dtos/update.dto";
 export class DeviceRepository implements IDeviceRepository {
   constructor(private readonly prisma: PrismaService) { }
 
-  async create(data: Partial<CreateDeviceDto>): Promise<void> {
+  async create(data: CreateDeviceDto): Promise<void> {
     await this.prisma.device.create({
       data: {
         name: data.name,
@@ -17,14 +17,6 @@ export class DeviceRepository implements IDeviceRepository {
         state: data.state,
       },
     });
-  }
-  private toEntity(device: any): DeviceEntity {
-    if (!device) return null;
-    return {
-      ...device,
-      state: device.state as DeviceState,
-      creationTime: new Date(device.creationTime),
-    };
   }
 
   async findAll(): Promise<DeviceEntity[]> {
@@ -54,5 +46,14 @@ export class DeviceRepository implements IDeviceRepository {
 
   async delete(id: number): Promise<void> {
     await this.prisma.device.delete({ where: { id } });
+  }
+
+  private toEntity(device: any): DeviceEntity {
+    if (!device) return null;
+    return {
+      ...device,
+      state: device.state as DeviceState,
+      creationTime: new Date(device.creationTime),
+    };
   }
 }
